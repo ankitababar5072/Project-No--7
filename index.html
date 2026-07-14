@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Disaster Tweet Classifier</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <h1>🚨 Disaster Tweet Classifier</h1>
+
+            <p>
+                Detect Disaster Related Tweets using
+                <strong>Machine Learning & NLP</strong>
+            </p>
+
+        </div>
+
+        <form action="/predict" method="POST">
+
+            <label class="input-title">
+                ✍ Enter or Paste Tweet
+            </label>
+
+            <textarea
+                id="tweet"
+                name="tweet"
+                maxlength="280"
+                placeholder="Type your tweet here..."
+                required></textarea>
+
+            <div class="counter">
+                Characters :
+                <span id="charCount">0</span>/280
+            </div>
+
+            <div class="btn-group">
+
+                <button type="submit" class="predict-btn">
+                    🚀 Predict
+                </button>
+
+                <button
+                    type="button"
+                    class="clear-btn"
+                    onclick="clearText()">
+
+                    🗑 Clear
+
+                </button>
+
+            </div>
+
+        </form>
+
+        {% if prediction_text %}
+
+        <div class="result">
+
+            <h2>{{ prediction_text }}</h2>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
